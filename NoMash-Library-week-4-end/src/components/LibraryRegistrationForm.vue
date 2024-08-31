@@ -16,8 +16,11 @@ const submitForm = () => {
   validateName(true)
   validatePassword(true)
   validateConfirmPassword(true)
+  validateReason(true)
+  validateFriend(true)
   if (!errors.value.username && !errors.value.password
-    && !errors.value.confirmPassword
+    && !errors.value.confirmPassword && !errors.value.reason
+    && !errors.value.validateFriend
   ) {
     submittedCards.value.push({ ...formData.value })
     clearForm()
@@ -85,6 +88,23 @@ const validatePassword = (blur) => {
     errors.value.confirmPassword = null
   }
 }
+
+ const validateReason = (blur) => {
+  if (formData.value.reason.length<10) {
+    if (blur) errors.value.reason = 'Reason must be at least 10 chars'
+  } else {
+    errors.value.confirmPassword = null
+  }
+}
+
+const validateFriend = (blur) => {
+  if (formData.value.reason.includes('friend')) {
+    if (blur) reasonFriend.value = true
+  } else {
+    reasonFriend.value=false
+  }
+ }
+const reasonFriend =ref(false) 
 </script>
 
 <template>
@@ -169,7 +189,11 @@ const validatePassword = (blur) => {
               id="reason"
               rows="3"
               v-model="formData.reason"
+              @blur="() => validateReason(true)"
+              @input="() => validateReason(false)"
             ></textarea>
+            <div v-if="errors.reason"  class="text-danger">{{ errors.reason }}</div>
+            <div v-if="errors.reason"  style="color: green;">{{ errors.reason }}</div>
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -249,3 +273,5 @@ const validatePassword = (blur) => {
   padding: 10px;
 }
 </style>
+/* /*configure fnm environment*/*/
+#fnm env --use-on-cd | Out-String | Invoke-Expression
