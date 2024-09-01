@@ -2,8 +2,8 @@
 import { defineProps, defineEmits } from "vue";
 
 const props = defineProps<{
-  value: number;
-  totalRating: number;
+  value: 5;
+  totalRating: 10;
 }>();
 
 
@@ -12,8 +12,10 @@ const emit = defineEmits<(event: "update-rating", value: number) => void>();
 
 <template>
   <div class="wrapper">
+    Please give feedback here
     <span v-for="star in 10" :key="star" class="star">★</span>
-    <span v-for="star in totalRating" :key="star" class="star" :class="{ filled: star <= 5 }">★</span>
+    AVG rating
+    <span v-for="star in 10" :key="star" class="star" :class="{ filled: star <= 4 }">★</span>
   </div>
 
 
