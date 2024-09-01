@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import DataTable from 'primevue/datatable'
-import Column from 'primevue/column'
+
 
 const formData = ref({
   username: '',
@@ -170,37 +169,9 @@ const reasonFriend =ref(false)
               <div v-if="errors.confirmPassword" class="text-danger">{{ errors.confirmPassword }}</div>
             </div>
           </div>
-          <div class="row mb-3">
-            <div class="col-md-6 col-sm-6">
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="isAustralian"
-                  v-model="formData.isAustralian"
-                />
-                <label class="form-check-label" for="isAustralian">Australian Resident?</label>
-              </div>
-            </div>
-            
-          </div>
-          <div class="mb-3">
-            <label for="reason" class="form-label">Reason for joining</label>
-            <textarea
-              class="form-control"
-              id="reason"
-              rows="3"
-              v-model="formData.reason"
-              @blur="() => validateReason(true)"
-              @input="() => {validateReason(false);validateFriend(true)}"
-            ></textarea>
-            <div v-if="errors.reason"  class="text-danger">{{ errors.reason }}</div>
-            <div v-if="reasonFriend"  style="color: green;">Great to have a friend</div>
-          </div>
-          <div class="mb-3">
-            <label for="reason" class="form-label">Suburb</label>
-            <input type="text" class="form-control" id="suburb" v-bind:value="formData.suburb" />
-          </div>
+          
+          
+          
           <div class="text-center">
             <button type="submit" class="btn btn-primary me-2">Submit</button>
             <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
@@ -210,16 +181,7 @@ const reasonFriend =ref(false)
     </div>
   </div>
 
-  <div class="row mt-5">
-    <h4>This is a Primevue Datatable.</h4>
-    <DataTable :value="submittedCards" tableStyle="min-width: 50rem">
-      <Column field="username" header="Username"></Column>
-      <Column field="password" header="Password"></Column>
-      <Column field="isAustralian" header="Australian Resident"></Column>
-      <Column field="gender" header="Gender"></Column>
-      <Column field="reason" header="Reason"></Column>
-    </DataTable>
-  </div>
+
 
   <div class="row mt-5" v-if="submittedCards.length">
     <div class="d-flex flex-wrap justify-content-start">
@@ -280,5 +242,5 @@ const reasonFriend =ref(false)
 }
 </style>
 /* /*configure fnm environment*/*/
-#fnm env --use-on-cd | Out-String | Invoke-Expression
+fnm env --use-on-cd | Out-String | Invoke-Expression
 npm run dev

@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import {auth} from './authentication.js'
+import RatingView from '@/views/RatingView.vue'
 const {check} = auth()
 
 const routes = [
@@ -20,6 +21,10 @@ const routes = [
     path: '/loginView',
     name: 'LoginView',
     component: LoginView
+  },{
+    path: '/RatingView',
+    name: 'RatingView',
+    component: RatingView
   }
 ]
 

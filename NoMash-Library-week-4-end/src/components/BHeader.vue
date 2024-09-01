@@ -18,6 +18,9 @@
         <li class="nav-item">
           <Button  class="nav-link" active-class="active" @click="logout">Logout</Button>
         </li>
+        <li class="nav-item">
+          <router-link to="/RatingView" class="nav-link" active-class="active">RatingView</router-link>
+        </li>
       </ul>
     </header>
   </div>
@@ -64,7 +67,7 @@
 <script setup>
 
 import {auth} from '../router/authentication'
-import router from '../router';
+
 const {check} = auth()
 const logout = () => {
 
