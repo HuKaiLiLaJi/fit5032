@@ -15,6 +15,9 @@
         <li class="nav-item">
           <router-link to="/loginView" class="nav-link" active-class="active">Login</router-link>
         </li>
+        <li class="nav-item">
+          <Button  class="nav-link" active-class="active" @click="logout">Logout</Button>
+        </li>
       </ul>
     </header>
   </div>
@@ -56,3 +59,16 @@
   outline: 0;
 }
 </style>
+
+
+<script setup>
+
+import {auth} from '../router/authentication'
+import router from '../router';
+const {check} = auth()
+const logout = () => {
+
+  check.value=false;
+  alert('You have logged out')
+}
+</script>

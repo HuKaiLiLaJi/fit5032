@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-
+import router from '../router';
+import {auth} from '../router/authentication'
+const {check} = auth()
 const formData = ref({
   username: '',
   password: '',
@@ -16,6 +18,12 @@ const submitForm = () => {
   && formData.value.password==passwordHC
   ) {
     alert('You have logged in')
+    check.value = true
+    
+    router.push({name:'About'})
+    
+
+    router.push({name:'About'})
   }
 }
 
